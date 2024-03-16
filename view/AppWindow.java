@@ -15,6 +15,8 @@ import controller.ButtonListener;
 import controller.NewGameButtonListener;
 import controller.StrategyButtonListener;
 import model.strategyPattern.VsComputerStrategy;
+import model.strategyPattern.VsHumanStrategy;
+import model.strategyPattern.VsSmartComputerStrategy;
 import view.statePattern.GameState;
 import view.statePattern.GameStateInit;
 
@@ -22,12 +24,14 @@ public class AppWindow extends JFrame {
 
     public static final String vsHumanAction = "vs. Human";
     public static final String vsComputerAction = "vs. Computer";
+    public static final String vsSmartComputerAction = "vs. Smart Computer";
 
     public AppCanvas canvas = new AppCanvas();
     public BoardButton[] markingButtons = new BoardButton[9];
     public JButton newGameButton = new JButton("New Game");
     public JRadioButton vsHumanButton;
     public JRadioButton vsComputerButton;
+    public JRadioButton vsSmartComputerButton;
 
     private GameState state = new GameStateInit();
 
@@ -54,16 +58,20 @@ public class AppWindow extends JFrame {
 
         JPanel radioPanel = new JPanel();
         radioPanel.setBorder(new TitledBorder("Play strategy"));
-        vsHumanButton = new JRadioButton(vsHumanAction, App.game.getStrategy() instanceof VsComputerStrategy);
+        vsHumanButton = new JRadioButton(vsHumanAction, App.game.getStrategy() instanceof VsHumanStrategy);
         vsComputerButton = new JRadioButton(vsComputerAction, App.game.getStrategy() instanceof VsComputerStrategy);
+        vsSmartComputerButton = new JRadioButton(vsSmartComputerAction, App.game.getStrategy() instanceof VsSmartComputerStrategy);
         radioPanel.add(vsHumanButton);
         radioPanel.add(vsComputerButton);
+        radioPanel.add(vsSmartComputerButton);
         StrategyButtonListener strategyListener = new StrategyButtonListener();
         vsHumanButton.addActionListener(strategyListener);
         vsComputerButton.addActionListener(strategyListener);
+        vsSmartComputerButton.addActionListener(strategyListener);
         ButtonGroup strategyGroup = new ButtonGroup();
         strategyGroup.add(vsHumanButton);
         strategyGroup.add(vsComputerButton);
+        strategyGroup.add(vsSmartComputerButton);
         southPanel.add(radioPanel);
 
         JPanel actionPanel = new JPanel();
