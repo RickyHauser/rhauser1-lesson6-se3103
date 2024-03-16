@@ -12,7 +12,7 @@ public class TicTacToeGame {
 
     public TicTacToeGame(){
         reset();
-        setStrategy(new VsHumanStrategy()); //default strategy
+        setStrategy(new VsHumanStrategy(this)); //default strategy
     }
 
     public void reset(){
@@ -30,6 +30,10 @@ public class TicTacToeGame {
 
     public Marking getTurn() {
         return turn;
+    }
+
+    public void incMoves() {
+        ++moves;
     }
 
     public void play(int position){
