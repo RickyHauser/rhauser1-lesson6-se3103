@@ -21,6 +21,7 @@ public class GameStatePlaying implements GameState {
         App.win.vsHumanButton.setEnabled(false);
         App.win.vsComputerButton.setEnabled(false);
         for (int i = 0; i < App.game.getBoard().length; i++){
+            App.win.markingButtons[i].setMark(App.game.getBoard()[i]);
             App.win.markingButtons[i].setEnabled(App.game.getBoard()[i] == Marking.U);
         }
         App.win.canvas.repaint();

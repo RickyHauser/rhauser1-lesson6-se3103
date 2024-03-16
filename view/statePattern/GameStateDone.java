@@ -17,8 +17,9 @@ public class GameStateDone implements GameState {
 
     @Override
     public void updateWindow() {
-        for (var b : App.win.markingButtons) {
-            b.setEnabled(false);
+        for (int i = 0; i < App.game.getBoard().length; i++){
+            App.win.markingButtons[i].setMark(App.game.getBoard()[i]);
+            App.win.markingButtons[i].setEnabled(false);
         }
         App.win.newGameButton.setEnabled(true);
         App.win.vsHumanButton.setEnabled(true);
