@@ -1,14 +1,18 @@
 package model;
 
+import model.strategyPattern.PlayStrategy;
+import model.strategyPattern.VsHumanStrategy;
+
 public class TicTacToeGame {
     private Marking[] board = new Marking[9];
     private Marking turn = Marking.X; //X starts first
     private int moves = 0;
     private Marking winner = null; // O or X or U (draw)
-    private PlayStrategy strategy = PlayStrategy.VsHuman;
+    private PlayStrategy strategy;
 
     public TicTacToeGame(){
         reset();
+        setStrategy(new VsHumanStrategy()); //default strategy
     }
 
     public void reset(){
@@ -29,17 +33,7 @@ public class TicTacToeGame {
     }
 
     public void play(int position){
-        if (strategy == PlayStrategy.VsHuman){
-            humanPlayer(position);
-            setWinner();
-        } else if (strategy == PlayStrategy.VsComputer) {
-            humanPlayer(position);
-            setWinner();
-            if (getWinner() != null) return;
-            ChangeTurns();
-            computerPlayer();
-            setWinner();
-        }
+        strategy.play(position);
     }
 
     public Marking getWinner() {
@@ -130,7 +124,6 @@ public class TicTacToeGame {
             return null;
         }
     }
-
 
     public PlayStrategy getStrategy() {
         return strategy;
