@@ -14,9 +14,7 @@ import controller.App;
 import controller.ButtonListener;
 import controller.NewGameButtonListener;
 import controller.StrategyButtonListener;
-import model.Marking;
 import model.PlayStrategy;
-import model.TicTacToeGame;
 import view.statePattern.GameState;
 import view.statePattern.GameStateInit;
 
@@ -94,6 +92,7 @@ public class AppWindow extends JFrame {
     }
 
     public void updateWindow() {
+        state.updateWindow();
         canvas.repaint();
     }
 
