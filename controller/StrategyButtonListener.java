@@ -3,7 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.PlayStrategy;
+import model.strategyPattern.VsComputerStrategy;
+import model.strategyPattern.VsHumanStrategy;
 import view.AppWindow;
 
 public class StrategyButtonListener implements ActionListener{
@@ -13,10 +14,10 @@ public class StrategyButtonListener implements ActionListener{
         var actionCommand = e.getActionCommand();
         switch (actionCommand){
             case AppWindow.vsHumanAction:
-                App.game.setStrategy(PlayStrategy.VsHuman);
+                App.game.setStrategy(new VsHumanStrategy(App.game));
                 break;
             case AppWindow.vsComputerAction:
-                App.game.setStrategy(PlayStrategy.VsComputer);
+                App.game.setStrategy(new VsComputerStrategy(App.game));
                 break;
         }
     }

@@ -14,7 +14,7 @@ import controller.App;
 import controller.ButtonListener;
 import controller.NewGameButtonListener;
 import controller.StrategyButtonListener;
-import model.PlayStrategy;
+import model.strategyPattern.VsComputerStrategy;
 import view.statePattern.GameState;
 import view.statePattern.GameStateInit;
 
@@ -54,8 +54,8 @@ public class AppWindow extends JFrame {
 
         JPanel radioPanel = new JPanel();
         radioPanel.setBorder(new TitledBorder("Play strategy"));
-        vsHumanButton = new JRadioButton(vsHumanAction, App.game.getStrategy() == PlayStrategy.VsHuman);
-        vsComputerButton = new JRadioButton(vsComputerAction, App.game.getStrategy() == PlayStrategy.VsComputer);
+        vsHumanButton = new JRadioButton(vsHumanAction, App.game.getStrategy() instanceof VsComputerStrategy);
+        vsComputerButton = new JRadioButton(vsComputerAction, App.game.getStrategy() instanceof VsComputerStrategy);
         radioPanel.add(vsHumanButton);
         radioPanel.add(vsComputerButton);
         StrategyButtonListener strategyListener = new StrategyButtonListener();

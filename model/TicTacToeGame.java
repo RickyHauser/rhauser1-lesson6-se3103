@@ -44,28 +44,6 @@ public class TicTacToeGame {
         return winner;
     }
 
-    private void computerPlayer() {
-        int pos = computerPick();
-        board[pos] = turn;
-        ++moves;
-    }
-
-    private int computerPick() {
-        int pos = -1;
-        for (int i = 0; i < board.length; i++){
-            if (board[i] == Marking.U) {
-                pos = i;
-                break;
-            }
-        }
-        assert pos >= 0 : "Invalid position from computerPick()";
-        return pos;
-    }
-
-    private void humanPlayer(int pos) {
-        board[pos] = turn;
-        ++moves;
-    }
 
     public void setWinner() {
         for (int i = 0; i < 3; i++){

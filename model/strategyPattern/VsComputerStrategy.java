@@ -7,7 +7,7 @@ public class VsComputerStrategy implements PlayStrategy{
 
     private TicTacToeGame game;
 
-    VsComputerStrategy(TicTacToeGame game) {
+    public VsComputerStrategy(TicTacToeGame game) {
         this.game = game;
     }
 
@@ -23,6 +23,7 @@ public class VsComputerStrategy implements PlayStrategy{
         int pos = computerPick();
         game.getBoard()[pos] = game.getTurn();
         game.incMoves();
+        game.setWinner();
     }
     private int computerPick() {
         int pos = -1;
